@@ -1,19 +1,23 @@
 package dependences
 
-import "log"
+import (
+	"log"
+	HandlerUser "parking/cmd/api/handler/register"
+	"parking/internal/register"
+)
 
 type HandlerContainer struct {
-	//HandlerLocation handlerLocation.Handler
+	HandlerUser HandlerUser.Handler
 }
 
 func NewWire() HandlerContainer {
-	_, err := NewDependencies()
+	dep, err := NewDependencies()
 	if err != nil {
 		log.Panicf(err.Error())
 		return HandlerContainer{}
 	}
-	//useCaseLocation := location.NewUseCaseLocation(dep.LocationRepository)
+	useCaseUser := register.NewUserUseCase(dep.UserRepository)
 	return HandlerContainer{
-		//HandlerLocation: handlerLocation.NewHandler(useCaseLocation),
+		HandlerUser: HandlerUser.NewHandler(useCaseUser),
 	}
 }
