@@ -1,0 +1,15 @@
+#Common IDE folders
+.idea
+.vscode
+
+#Folder github
+.github
+
+#Binaries for programs
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+#algo
